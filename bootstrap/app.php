@@ -93,10 +93,16 @@ $app->singleton(
 |
 */
 
+
 $app->router->group([
-    'namespace' => 'App\Http\Controllers',
-], function ($router) {
-    require __DIR__.'/../routes/web.php';
+    'prefix' => 'api/clientes',
+    'namespace' => 'App\Http\Controllers'
+], function () use ($app){
+    $app->router->get('', 'ClientesController@index');
+    $app->router->get('{id}', 'ClientesController@list');
+    $app->router->post('', 'ClientesController@inclusao');
+    $app->router->put('{id}', 'ClientesController@update');
+    $app->router->delete('{id}', 'ClientesController@delete');
 });
 
 return $app;

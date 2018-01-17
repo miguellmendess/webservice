@@ -1,12 +1,25 @@
 <?php
 
-$app->get('/', function () use ($app){
-    return $app->version();
-});
+print_r($router);
+die();
 
-$app->group([
+$router->get('/', function () use ($router) {
+    return $router->app->version();
+
+});
+$router->get('/api/clientes/', ['uses' => 'ClientesController@index']);
+/*
+
+$router->get('/', ['uses' => 'ClientesController@index']);
+
+
+$router->get('/', ['uses' => 'ClientesController@index']);
+
+$router->group([
     'prefix' => 'api/clientes',
     'namespace' => 'App\Http\Controllers'
-], function () use ($app){
-    $app->get('', 'ClientesController@index')
+], function () use ($router){
+    $router->get('', 'ExampleController@index');
 });
+
+*/

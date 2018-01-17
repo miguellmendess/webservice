@@ -14,10 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-
-$router->group([
+/*
+$router->app->group([
     'prefix' => 'api/clientes',
     'namespace' => 'App\Http\Controllers'
 ], function () use ($router){
-    $router->get('', 'ClientesController@index');
+    $router->app->get('', 'ClientesController@index');
 });
+*/
